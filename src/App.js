@@ -33,7 +33,9 @@ function App() {
     
   }
 
+  
   const handleActua=e=>{
+    console.log(e)
     setEnviar(e.target.value);
     
   }
