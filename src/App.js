@@ -93,7 +93,7 @@ function App() {
             <td>{tutor.status_empleado}</td>
             <td>
               
-            <button button className= "btn btn-success" onClick={() => handleActua(tutor)}>
+            <button button className= "btn btn-success">
               Seleccionar Tutor
             </button> 
             </td>
