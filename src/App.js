@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
 import './App.css';
-import { Component, useEffect, useState } from 'react';
-import axios from "axios";
-import "bootstrap/dist/css/bootstrap.min.css";
+import { useEffect, useState } from "react";
+import axios from 'axios';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button } from 'bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
@@ -15,6 +14,8 @@ function App() {
   const [tutores,setTutores] =useState([]);
   const [tablatutores,setTablaTutores] =useState([]);
   const [busqueda, setBusqueda]= useState([]);
+  const [enviar, setEnviar]= useState(["false"]);
+
 
   const peticionGet = async()=>{
    await axios.get("http://127.0.0.1:8000/api/Personal/")
@@ -31,6 +32,12 @@ function App() {
     filtrar(e.target.value);
     
   }
+
+  const handleActua=e=>{
+    setEnviar(e.target.value);
+    
+  }
+ 
 
   const filtrar=(terminoBusqueda)=>{
     var resultadosBusqueda=tablatutores.filter((elemento)=>{
@@ -83,9 +90,10 @@ function App() {
             <td>{tutor.clave_area}</td>
             <td>{tutor.status_empleado}</td>
             <td>
-            <button button className= "btn btn-success">
+              
+            <button button className= "btn btn-success" onClick={() => handleActua(tutor)}>
               Seleccionar Tutor
-            </button>
+            </button> 
             </td>
           </tr>
         ))}
@@ -101,39 +109,5 @@ export default App;
 
 
 
-/*
-class App extends Component {
-  state={
-     Carreras:[]
-  }
-  componentDidMount(){
-    axios 
-      .get("http://127.0.0.1:8000/api/Carreras/")
-      .then((response) => {
-        console.log(response);
-        this.setState({Carreras: response.data})
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-  }
- 
-  render() {
-    return (
-      <div className="App">
-        <div className="form-group">
-          <select name="Carreras" className="form-control">
-            {this.state.Carreras.map(elemento=>(
-              <option key={elemento.carrera} value={elemento.carrera}>{elemento.nombre_carrera}</option>
-            )
-
-            )}
-         </select>
-        </div>
-      </div>
-    );
-  }
-}
-/*
 
 
