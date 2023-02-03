@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 //componentes
-import TutoresList from './components/Tutores/TutoresList'
+// import TutoresList from './components/Tutores/TutoresList'
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <App/>
